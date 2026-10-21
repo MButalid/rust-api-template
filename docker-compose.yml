@@ -1,0 +1,25 @@
+# Local Postgres for development and `cargo test`.
+#
+#   docker compose up -d
+#
+# Postgres 18+ is required: the migrations use `uuidv7()`.
+# Set POSTGRES_PORT if 5432 is already taken on your machine (and update DATABASE_URL to match).
+services:
+  db:
+    image: postgres:18
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: template
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 2s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  pgdata:
