@@ -1,5 +1,5 @@
 -- This is a boilerplate migration file that I use in nearly every project.
--- It sets up database features that we use quite often.
+-- It sets up database features that I use quite often.
 
 -- As a style choice, I prefer not to write SQL in all uppercase as lowercase feels friendlier to the eyes.
 -- It's nicer to read WHEN THE CODE ISN'T YELLING AT YOU ALL DAY.
